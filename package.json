@@ -1,0 +1,17 @@
+{
+  "name": "autopilot-enrollment-existing-devices",
+  "version": "1.0.0",
+  "description": "Web API to recieve autopilot enrollment information from existing devices",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jacob Stauffer - Coherent CYBER",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-winston": "^3.1.0",
+    "winston": "^3.2.1"
+  }
+}
