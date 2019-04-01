@@ -15,7 +15,7 @@ const finalCSV = path.join(dataDir, 'hostregistration_final.csv')
 fs.existsSync(dataDir) || fs.mkdirSync(dataDir)
 fs.existsSync(dataFile) || fs.open(dataFile, 'w', (err) => { if (err) throw err })
 fs.existsSync(errorFile) || fs.open(errorFile, 'w', (err) => { if (err) throw err })
-fs.existsSync(errorFile) || fs.writeFileSync(finalCSV, `Timestamp,${regStructValues.map(value => { return '"' + value + '"' })}\n`)
+fs.existsSync(errorFile) || fs.writeFileSync(finalCSV, `"Timestamp",${regStructValues.map(value => { return '"' + value + '"' })}\n`)
 
 async function parseRegistration(hostregistration) {
   hostregistration['Timestamp'] = new Date().toISOString(Date.now())
@@ -49,10 +49,10 @@ async function parseRegistration(hostregistration) {
     fs.appendFileSync(finalCSV, `"${hostregistration.Timestamp}",${regStructValues.map(value => { return hostregistration[value] })}\n`, (err) => {
       if (err) throw err
     })
-    return { "result": "Registration success" }
+    return { "response": "Registration success" }
   }
   else {
-    return { "result": "Host already registered" }
+    return { "response": "Host already registered" }
   }
 }
 

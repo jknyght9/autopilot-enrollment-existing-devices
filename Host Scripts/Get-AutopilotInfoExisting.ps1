@@ -41,7 +41,7 @@ This script uses WMI to retrieve properties needed by the Microsoft Store for Bu
 [CmdletBinding()]
 param(
   [Parameter(Mandatory = $False, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True, Position = 0)][alias("DNSHostName", "ComputerName", "Computer")] [String[]] $Name = @($env:ComputerName),
-  [Parameter(Mandatory = $False)] [String] $WebAPI = "http://10.10.1.17:8000/register"
+  [Parameter(Mandatory = $True)] [String] $WebAPI = ""
 )
 
 Begin {
@@ -59,7 +59,8 @@ Process {
 
   foreach ($comp in $Name) {
     $bad = $false
-    Write-Verbose "Obtaining system information..."
+    Write-Host "Obtaining system information..."
+    $externalip = (Invoke-WebRequest -Uri http://icanhazip.com -Method GET).Content
     $serial = (Get-WmiObject -ComputerName $comp -Credential $Credential -Class Win32_BIOS).SerialNumber
 
     # Get the hash (if available)
@@ -90,7 +91,8 @@ Process {
     $product = ""
 
     $apinfo = New-Object psobject -Property @{
-      "Hostname"             = $Name
+      "Hostname"             = $comp
+      "ExternalIP"           = $externalip
       "Device Serial Number" = $serial
       "Windows Product ID"   = $product
       "Hardware Hash"        = $hash
