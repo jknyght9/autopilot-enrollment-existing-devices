@@ -39,7 +39,7 @@ npm start
 
 ![Web API installation](./Media/installwebapi.gif)
 
-## Notes regarding the Web API
+### Notes regarding the Web API
 - The API runs on port 8000
 - HIGHLY recommend using a load balancer with an SSL/TLS certificate to encrypt all the traffic. Otherwise this data will transmitted in CLEAR TEXT. **You are responsible for any data leakage that may occur.**
 - Ensure that your host firewall allows TCP port 8000
@@ -47,7 +47,7 @@ npm start
 - Web server logs (access and error) are located in the `log` folder
 - Host registration information is located in the `data` folder
 
-## Troubleshooting Web API
+### Testing the Web API
 Before deploying the Powershell script, you will need to test the API from an external system with the following commands:
 
 ```
