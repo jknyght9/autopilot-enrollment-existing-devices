@@ -78,3 +78,5 @@ Once the systems have executed the Powershell script, you can retrieve the CSV f
 
 ## References
 [https://docs.microsoft.com/en-us/intune/enrollment-autopilot](https://docs.microsoft.com/en-us/intune/enrollment-autopilot)
+
+[https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-autopilot-requirements](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-autopilot-requirements)
