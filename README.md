@@ -19,7 +19,7 @@ Current Windows Autopilot enrollment options require either the OEM to preregist
 - Nodejs
 - DNS record for web API (more for convenience)
 
-## Requirements (Remote Host)
+### Requirements (Remote Host)
 - a running web API
 - administrator privileges
 - Powershell 3.0
