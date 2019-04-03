@@ -2,7 +2,7 @@
 ## Introduction
 Current Windows Autopilot enrollment options require either the OEM to preregister new devices in your Microsoft Business Store or push a script to an existing device (using SCCM, etc.), then pull the resulting CSV to manually enroll the system into Autopilot. But what about existing systems that are geographically seperated, not Azure AD enrolled, not VPN'd into a network, or centrally managed? This project allows an administrator to push a short Powershell script to a remote system and send its results to a Internet facing web API. This "push" can be done through third-party software like Team Viewer, LogMeIn or simply have the remote user run the script as an Administrator.
 
-## Information gathered
+### Information gathered
 - Hostname
 - External IP address
 - Hardware serial number
@@ -10,7 +10,7 @@ Current Windows Autopilot enrollment options require either the OEM to preregist
 - Hardware hash
 - Timestamp of execution
 
-## Components
+### Components
 - `autopilot-enrollment-existing-devices` Nodejs web API
 - `Host Scripts\get-apinfoexisting.ps1` Powershell script for remote system
 
