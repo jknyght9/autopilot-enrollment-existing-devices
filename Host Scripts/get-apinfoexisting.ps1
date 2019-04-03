@@ -1,10 +1,10 @@
 New-Module -name get_autopilotinfo_existing -scriptblock {
   # To execute this script as a one liner on a windows host with powershell 3.0+, run this command replacing server URI with your hosted web API <mandatory>. Please see our autopilot-enrollment-existing-devices project for more information.
 
-  # [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/jknyght9/autopilot-enrollment-existing-devices/master/Host%20Scripts/get-apinfoexisting.ps1") | iex; getautopilotinfoexisting <server URI>
+  # [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/jknyght9/autopilot-enrollment-existing-devices/master/Host%20Scripts/get-apinfoexisting.ps1") | iex; getautopilotinfoexisting https://<server URI>:8000/register
 
   # Example:
-  # [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/jknyght9/autopilot-enrollment-existing-devices/master/Host%20Scripts/get-apinfoexisting.ps1") | iex; getautopilotinfoexisting https://myserver/register
+  # [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/jknyght9/autopilot-enrollment-existing-devices/master/Host%20Scripts/get-apinfoexisting.ps1") | iex; getautopilotinfoexisting https://myserver:8000/register
 
   Function Get-AutopilotInfoExisting() {
     param(
