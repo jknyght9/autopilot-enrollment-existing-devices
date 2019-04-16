@@ -5,7 +5,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const regStructValues = ['Device Serial Number', 'Windows Product ID', 'Hardware Hash', 'Manufacturer name', 'Device model']
+const regStructValues = ['Device Serial Number', 'Windows Product ID', 'Hardware Hash']
 const dataDir = path.join(__dirname, 'data')
 const dataFile = path.join(dataDir, 'hostregistration.log')
 const errorFile = path.join(dataDir, 'hostregistration_error.log')
