@@ -26,7 +26,7 @@ New-Module -name get_autopilotinfo_existing -scriptblock {
     foreach ($comp in $Name) {
       $bad = $false
       Write-Host "Obtaining system information..."
-      $externalip = (Invoke-WebRequest -Uri http://icanhazip.com -Method GET).Content
+      $externalip = (Invoke-WebRequest -Uri http://icanhazip.com -Method GET -UseBasicParsing).Content
       $serial = (Get-WmiObject -ComputerName $comp -Credential $Credential -Class Win32_BIOS).SerialNumber
   
       # Get the hash (if available)
@@ -73,7 +73,7 @@ New-Module -name get_autopilotinfo_existing -scriptblock {
       }
     }
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-    Invoke-WebRequest -Uri $WebAPI -Method POST -Body ($apinfo | ConvertTo-Json) -ContentType "application/json"
+    Invoke-WebRequest -Uri $WebAPI -Method POST -Body ($apinfo | ConvertTo-Json) -ContentType "application/json" -UseBasicParsing
   }
   Set-Alias getautopilotinfoexisting -Value Get-AutopilotInfoExisting | Out-Null
   Export-ModuleMember -Alias 'getautopilotinfoexisting' -Function 'Get-AutopilotInfoExisting' | Out-Null
