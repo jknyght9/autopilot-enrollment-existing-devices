@@ -18,17 +18,8 @@ fs.existsSync(errorFile) || fs.open(errorFile, 'w', (err) => { if (err) throw er
 fs.existsSync(errorFile) || fs.writeFileSync(finalCSV, `"Timestamp",${regStructValues.map(value => { return '"' + value + '"' })}\n`)
 
 async function parseRegistration(hostregistration) {
+  // timestamp
   hostregistration['Timestamp'] = new Date().toISOString(Date.now())
-  // throw an error if something is missing
-  // regStructValues.map(value => {
-  //   if (!hostregistration[value] || hostregistration[value] == '') {
-  //     // log error
-  //     fs.appendFileSync(errorFile, JSON.stringify(hostregistration) + ',\n', (err) => {
-  //       if (err) throw err
-  //     })
-  //     throw `${value} does not exist, registration failed.`
-  //   }
-  // })
 
   // verify the host has not been entered already
   var exists = false
@@ -49,6 +40,7 @@ async function parseRegistration(hostregistration) {
     fs.appendFileSync(finalCSV, `"${hostregistration.Timestamp}",${regStructValues.map(value => { return hostregistration[value] })}\n`, (err) => {
       if (err) throw err
     })
+    console.log(hostregistration['Timestamp'] + " : " + "Successful registration.")
     return { "response": "Registration success" }
   }
   else {

@@ -71,6 +71,11 @@ Once the web API is running, the admin will need to have the remote hosts execut
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/jknyght9/autopilot-enrollment-existing-devices/master/Host%20Scripts/get-apinfoexisting.ps1") | iex; getautopilotinfoexisting https://<server URI>:8000/register
 ```
 
+If you are using a self-signed certificate for SSL/TLS communication, you will need to bypass powershell's certificate validation check with the following:
+```
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};(new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/jknyght9/autopilot-enrollment-existing-devices/master/Host%20Scripts/get-apinfoexisting.ps1") | iex; getautopilotinfoexisting https://<server URI>:8000/register
+```
+
 This script will set the system up for secure communications, download the `get-apinfoexisting.ps1` script and run the module using your web API URL. Note that you will have to change the `<server URI>` to the IP address or hostname you have configured for the web API. Also, you must have the `/register` path at the end of the URL.
 
 ## Retrieving the Registration Data

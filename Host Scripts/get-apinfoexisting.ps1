@@ -6,6 +6,9 @@ New-Module -name get_autopilotinfo_existing -scriptblock {
   # Example:
   # [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/jknyght9/autopilot-enrollment-existing-devices/master/Host%20Scripts/get-apinfoexisting.ps1") | iex; getautopilotinfoexisting https://myserver:8000/register
 
+  # Self-Signed Certificate Example:
+  # [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};(new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/jknyght9/autopilot-enrollment-existing-devices/master/Host%20Scripts/get-apinfoexisting.ps1") | iex; getautopilotinfoexisting https://myserver:8000/register
+
   Function Get-AutopilotInfoExisting() {
     param(
       [Parameter(Position = 0)]
@@ -28,6 +31,8 @@ New-Module -name get_autopilotinfo_existing -scriptblock {
       Write-Host "Obtaining system information..."
       $externalip = (Invoke-WebRequest -Uri http://icanhazip.com -Method GET -UseBasicParsing).Content
       $serial = (Get-WmiObject -ComputerName $comp -Credential $Credential -Class Win32_BIOS).SerialNumber
+      $osname = (Get-WmiObject -ComputerName $comp -Credential $Credential -Class Win32_OperatingSystem).Caption
+      $osver = (Get-WmiObject -ComputerName $comp -Credential $Credential -Class Win32_OperatingSystem).Version
   
       # Get the hash (if available)
       $devDetail = (Get-WMIObject -ComputerName $comp -Credential $Credential -Namespace root/cimv2/mdm/dmmap -Class MDM_DevDetail_Ext01 -Filter "InstanceID='Ext' AND ParentID='./DevDetail'")
@@ -58,6 +63,7 @@ New-Module -name get_autopilotinfo_existing -scriptblock {
   
       $apinfo = New-Object psobject -Property @{
         "Hostname"             = $comp
+        "OS"                   = $osname + " " + $osver
         "ExternalIP"           = $externalip
         "Device Serial Number" = $serial
         "Windows Product ID"   = $product
