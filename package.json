@@ -10,7 +10,7 @@
   "author": "Jacob Stauffer - Coherent CYBER",
   "license": "Apache-2.0",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-winston": "^3.1.0",
     "winston": "^3.2.1"
   }
