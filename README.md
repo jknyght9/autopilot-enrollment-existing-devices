@@ -1,4 +1,5 @@
 # Windows Autopilot Enrollment for Existing Devices
+
 ## Introduction
 Current Windows Autopilot enrollment options require either the OEM to preregister new devices in your Microsoft Business Store or push a script to an existing device (using SCCM, etc.), then pull the resulting CSV to manually enroll the system into Autopilot. But what about existing systems that are geographically seperated, not Azure AD enrolled, not VPN'd into a network, or centrally managed? This project allows an administrator to push a short Powershell script to a remote system and send its results to a Internet facing web API. This "push" can be done through third-party software like Team Viewer, LogMeIn or simply have the remote user run the script as an Administrator.
 
@@ -85,3 +86,17 @@ Once the systems have executed the Powershell script, you can retrieve the CSV f
 [https://docs.microsoft.com/en-us/intune/enrollment-autopilot](https://docs.microsoft.com/en-us/intune/enrollment-autopilot)
 
 [https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-autopilot-requirements](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-autopilot-requirements)
+
+## Legal / License
+
+This project is open source and distributed under the MIT License.
+
+> This software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+
+---
+
+## Author
+
+Created by Jacob Stauffer | CISSP, GCFA, GREM, OSCP — Contributions and PRs welcome!
+
+<a href="https://www.buymeacoffee.com/jstauffer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
